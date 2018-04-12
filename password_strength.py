@@ -57,16 +57,15 @@ def is_special_symbols(password):
 def count_result(password, black_list):
     bonus_for_all_passed = 1
     score = 1
-    if is_in_black_list(password, black_list) == 1:
-        return 0
-    else:
-        score += sum([
-            rate_length(password),
-            is_all_digits(password),
-            is_all_letters(password),
-            rate_for_camel_case(password),
-            is_special_symbols(password),
-        ])
+    if is_in_black_list(password, black_list):
+        return 0 
+    score += sum([
+        rate_length(password),
+        is_all_digits(password),
+        is_all_letters(password),
+        rate_for_camel_case(password),
+        is_special_symbols(password),
+    ])
     score = (score if score < 9 else score + bonus_for_all_passed)
     return score
 
